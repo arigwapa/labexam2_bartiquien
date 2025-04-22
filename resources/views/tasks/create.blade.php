@@ -23,9 +23,8 @@
 
                     <div class="profile d-flex align-items-center mb-3">
 
-                        <div class="mx-3">
-                            <div class="fw-bold">Disney Princess</div>
-                            <small class="text-muted"><i class="bi bi-people-fill"></i> Friends</small>
+                        <div class="mx-2">
+                            <div class="fw-bold">New Task</div>
                         </div>
                     </div>
 

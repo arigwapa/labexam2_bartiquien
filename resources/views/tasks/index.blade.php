@@ -3,55 +3,51 @@
 @section('title', 'All Tasks')
 
 @section('content')
-<div class="container mx-auto mt-6">
-    <div class="flex justify-between items-center mb-4">
-        <h1 class="text-2xl font-bold">Task List</h1>
-        <a href="{{ route('tasks.create') }}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">+ Add Task</a>
-    </div>
+    <div class="container mt-5 d-flex justify-content-center align-items-center">
+        <div class="profile-card d-flex justify-content-center align-items-center">
+            <img src="https://cdn-icons-png.flaticon.com/512/6783/6783643.png" alt="User Profile">
+            <button class="mind-button btn " onclick="location.href='tasks/create';">
+                Add task here
+            </button>
 
-    @if(session('success'))
-        <div class="bg-green-100 text-green-800 p-3 rounded mb-4">
-            {{ session('success') }}
         </div>
-    @endif
+    </div>
+    @foreach ($tasks as $task)
+        <div class="container mt-3 d-flex justify-content-center align-items-center">
+            <div class="profile-body d-flex justify-content-start align-items-center">
+                <div class="mx-4 d-block justify-content-start align-items-center w-100">
+                    <div class="d-flex align-items-center">
+                        <div class="col mt-2 d-flex align-items-center mb-2">
+                            <div class="form-check d-flex align-items-center gap-2">
+                                <input class="form-check-input" type="checkbox" id="check-{{ $task->id }}"
+                                    onclick="completeTask({{ $task->id }})">
+                                <label class="form-check-label mb-0 mx-3" for="check-{{ $task->id }}">
+                                    <h6 class="mb-0" id="title-{{ $task->id }}">{{ $task->title }}</h6>
+                                </label>
+                            </div>
+                        </div>
 
-    @if($tasks->isEmpty())
-        <p class="text-gray-600">No tasks available. Click “Add Task” to create your first one.</p>
-    @else
-        <table class="min-w-full bg-white border rounded shadow">
-            <thead>
-                <tr class="bg-gray-100 text-left">
-                    <th class="py-2 px-4">Title</th>
-                    <th class="py-2 px-4">Description</th>
-                    <th class="py-2 px-4">Completed</th>
-                    <th class="py-2 px-4">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($tasks as $task)
-                <tr class="border-t">
-                    <td class="py-2 px-4 {{ $task->is_completed ? 'line-through text-gray-500' : '' }}">
-                        {{ $task->title }}
-                    </td>
-                    <td class="py-2 px-4">{{ $task->description }}</td>
-                    <td class="py-2 px-4">
-                        <span class="{{ $task->is_completed ? 'text-green-600 font-semibold' : 'text-red-600 font-semibold' }}">
-                            {{ $task->is_completed ? 'Yes' : 'No' }}
-                        </span>
-                    </td>
-                    <td class="py-2 px-4 flex gap-2">
-                        <a href="{{ route('tasks.edit', $task->id) }}" class="text-blue-600 hover:underline">Edit</a>
-                        <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" onsubmit="return confirm('Delete this task?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-600 hover:underline">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @endif
-</div>
+                        <div class="dropdown">
+                            <button class="btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="{{ route('tasks.edit', $task->id) }}">Edit</a></li>
+                                <li><a class="dropdown-item" href="{{ route('tasks.show', $task->id) }}">Show Task</a></li>
+                                <form action="{{ route('tasks.destroy', $task->id) }}" method="POST"
+                                    onsubmit="return confirm('Are you sure you want to delete this task?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="dropdown-item text-danger">Delete</button>
+                                </form>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    </div>
 @endsection
-

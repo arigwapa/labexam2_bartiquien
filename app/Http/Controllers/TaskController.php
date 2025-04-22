@@ -55,8 +55,8 @@ class TaskController extends Controller
      */
     public function edit(string $id)
     {
-        $tasks = Task::findOrFail($id);
-        return view('tasks.edit', compact('tasks'));
+        $task = Task::findOrFail($id);
+        return view('tasks.edit', compact('task'));
     }
 
     /**
@@ -66,12 +66,12 @@ class TaskController extends Controller
     {
         $request->validate([
             'title' => 'required|string|max:255',
-            'body' => 'nullable|string',
+            'description' => 'nullable|string',
         ]);
 
         $task->update([
             'title' => $request->title,
-            'description' => $request->body,
+            'description' => $request->description,
         ]);
 
         return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');

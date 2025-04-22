@@ -23,6 +23,19 @@
             integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous">
         </script>
 
+        <script>
+            function completeTask(id) {
+                const checkbox = document.getElementById(`check-${id}`);
+                const title = document.getElementById(`title-${id}`);
+
+                if (checkbox.checked) {
+                    title.classList.add('completed');
+                } else {
+                    title.classList.remove('completed');
+                }
+            }
+        </script>
+
     </body>
 
 </html>
