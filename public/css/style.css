@@ -1,0 +1,123 @@
+body {
+    background-color: #ececec;
+    overflow-y: auto;
+}
+
+.profile-card {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 38rem;
+    height: 80px;
+    border: 1px solid #ccc;
+}
+
+.profile-body {
+    padding: 10px 12px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 38rem;
+    height: auto;
+    border: 1px solid #ccc;
+}
+
+.header {
+    margin-top: 100px;
+}
+.row h6 {
+    color: #909090;
+}
+
+.row h5 {
+    font-weight: 500;
+}
+
+.profile-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.profile-body img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.mind-button {
+    background-color: #f1f2f5;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #65676b;
+    cursor: pointer;
+    width: 80%;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.mind-button:hover {
+    background-color: #eaeaea;
+    color: #65676b;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-details {
+    display: flex;
+    align-items: center;
+}
+
+.create-post-card {
+    max-width: 500px;
+    margin: 50px auto;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 16px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post-input {
+    width: 100%;
+    border: none;
+    resize: none;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.post-input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.add-to-post-icons i {
+    font-size: 24px;
+    margin-right: 15px;
+    cursor: pointer;
+    color: #666;
+}
+
+.post-btn {
+    width: 100%;
+    border-radius: 20px;
+}
